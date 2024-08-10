@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # App
     'authentication',
+    'contacts',
     # DRF_APPS
     'rest_framework',
 ]
