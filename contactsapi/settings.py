@@ -42,7 +42,22 @@ INSTALLED_APPS = [
     'contacts',
     # DRF_APPS
     'rest_framework',
+    # Swagger UI
+    'drf_yasg',
+
 ]
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "Auth Token [Bearer (JWT) ]": {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
+
 
 
 REST_FRAMEWORK = {

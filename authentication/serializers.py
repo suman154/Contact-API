@@ -35,4 +35,21 @@ class RegisterSerializer(serializers.Serializer):
         )
         return user
     
+
+class loginSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=150, min_length=1)
+    password = serializers.CharField(max_length=128, min_length=8, write_only=True)
+    
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+    
+    def validate(self, attrs):
+        user = User.objects.filter(username=attrs['username']).first()
+        if user is None:
+            raise serializers.ValidationError({"username": "Username not found."})
+        if not user.check_password(attrs['password']):
+            raise serializers.ValidationError({"password": "Incorrect password."})
+        return attrs
+    
     

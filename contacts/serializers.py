@@ -8,3 +8,6 @@ class ContactSerializer(ModelSerializer):
         model = Contact
         fields = ['country_code', 'first_name', 'last_name', 'phone_number', 'contact_picture', 'is_favorite']
         read_only_fields = ('owner',) # owner field is read only
+
+
+
